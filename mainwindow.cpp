@@ -137,6 +137,8 @@ void MainWindow::on_cellChanged(Cell *cell)
                 if (cset.find(i) != cset.end()) {
                     field->setStyleSheet("color: yellow; background-color: red");
                     ui->goButton->setEnabled(false);
+                } else if (board.cells[i]->solved()) {
+                    field->setStyleSheet("color: white; background-color: black");
                 } else {
                     field->setStyleSheet("color: black; background-color: white");
                 }
@@ -157,7 +159,6 @@ void MainWindow::on_exitButton_pressed()
 
 void MainWindow::on_goButton_pressed()
 {
-
 }
 
 void MainWindow::on_clearButton_pressed()

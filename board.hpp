@@ -12,6 +12,10 @@ class Serie
 friend class Cell;
 friend class Board;
 
+public:
+    const int                no;
+    const std::vector<Cell*> cells;
+
 protected:
     /**
      * @brief Serie Base class for Group, Row and Col.
@@ -36,9 +40,7 @@ protected:
 private:
     void clear();
 
-    const int                no;
-    const std::vector<Cell*> cells;
-    uint16_t                 mask;
+    uint16_t mask;
 };
 
 class Group : public Serie
@@ -200,15 +202,15 @@ public:
         new Cell(52, groups[5], rows[5], cols[7]),
         new Cell(53, groups[5], rows[5], cols[8]),
 
-        new Cell(54, groups[6], rows[6], cols[1]),
-        new Cell(55, groups[6], rows[6], cols[2]),
-        new Cell(56, groups[6], rows[6], cols[3]),
-        new Cell(57, groups[6], rows[7], cols[1]),
-        new Cell(58, groups[6], rows[7], cols[2]),
-        new Cell(59, groups[6], rows[7], cols[3]),
-        new Cell(60, groups[6], rows[8], cols[1]),
-        new Cell(61, groups[6], rows[8], cols[2]),
-        new Cell(62, groups[6], rows[8], cols[3]),
+        new Cell(54, groups[6], rows[6], cols[0]),
+        new Cell(55, groups[6], rows[6], cols[1]),
+        new Cell(56, groups[6], rows[6], cols[2]),
+        new Cell(57, groups[6], rows[7], cols[0]),
+        new Cell(58, groups[6], rows[7], cols[1]),
+        new Cell(59, groups[6], rows[7], cols[2]),
+        new Cell(60, groups[6], rows[8], cols[0]),
+        new Cell(61, groups[6], rows[8], cols[1]),
+        new Cell(62, groups[6], rows[8], cols[2]),
 
         new Cell(63, groups[7], rows[6], cols[3]),
         new Cell(64, groups[7], rows[6], cols[4]),
