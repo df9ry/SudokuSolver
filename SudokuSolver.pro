@@ -26,12 +26,18 @@ CONFIG += c++11
 
 SOURCES += \
         board.cpp \
+        checkpoint.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        result.cpp \
+        thesis.cpp
 
 HEADERS += \
         board.hpp \
-        mainwindow.hpp
+        checkpoint.hpp \
+        mainwindow.hpp \
+        result.hpp \
+        thesis.hpp
 
 FORMS += \
         mainwindow.ui

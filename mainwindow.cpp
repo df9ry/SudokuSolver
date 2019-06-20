@@ -1,5 +1,12 @@
 #include "mainwindow.hpp"
 #include "ui_mainwindow.h"
+#include "result.hpp"
+
+#include <list>
+
+#include <QMessageBox>
+
+using namespace std;
 
 QLineEdit *fields[81];
 
@@ -159,9 +166,34 @@ void MainWindow::on_exitButton_pressed()
 
 void MainWindow::on_goButton_pressed()
 {
+    assert(state == enter);
+    state = calc;
+    ui->goButton->setEnabled(false);
+    enableInput(false);
+    update();
+    list<Result> results;
+    try {
+        board.solve(results);
+    }
+    catch (const exception& ex) {
+        QMessageBox::critical(this, tr("Fehler"), ex.what());
+    }
+    catch (...) {
+        QMessageBox::critical(this, tr("Fehler"), tr("Unbekannter Fehler"));
+    }
+    state = result;
 }
 
 void MainWindow::on_clearButton_pressed()
 {
     board.clear();
+    for (int i = 0; i < 81; ++i) {
+        QLineEdit *field{fields[i]};
+        assert(field);
+        field->setText("");
+        field->setStyleSheet("color: black; background-color: white");
+    } // end for //
+    state = enter;
+    ui->goButton->setEnabled(true);
+    enableInput(true);
 }

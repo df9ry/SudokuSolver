@@ -1,5 +1,3 @@
-#include <QLineEdit>
-
 #include <assert.h>
 
 #include "board.hpp"
@@ -35,7 +33,6 @@ void Cell::getCollissions(std::set<uint8_t>& cset) const
 void Cell::clear()
 {
     assert(field);
-    field->setText("");
     value = 0;
     mask = 0x00;
 }
@@ -72,4 +69,9 @@ std::set<uint8_t> Board::getCollissions() const
     for (int i = 0; i < 81; ++i)
         cells[i]->getCollissions(cset);
     return cset;
+}
+
+void Board::solve(std::list<Result>& results)
+{
+
 }

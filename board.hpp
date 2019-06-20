@@ -3,6 +3,11 @@
 
 #include <vector>
 #include <set>
+#include <list>
+
+#include <stdint.h>
+
+#include "result.hpp"
 
 class QLineEdit;
 class Cell;
@@ -11,6 +16,7 @@ class Serie
 {
 friend class Cell;
 friend class Board;
+friend class CheckPoint;
 
 public:
     const int                no;
@@ -96,11 +102,13 @@ class Cell
 {
 friend class Board;
 friend class Serie;
+friend class CheckPoint;
 
 public:
     void clear();
     bool solved() const { return (value); }
     void set(uint8_t value);
+    uint8_t get() const { return value; }
 
 QLineEdit *field{nullptr};
 
@@ -379,6 +387,7 @@ public:
 
     void clear();
     std::set<uint8_t> getCollissions() const;
+    void solve(std::list<Result>& results);
 };
 
 #endif // BOARD_HPP
